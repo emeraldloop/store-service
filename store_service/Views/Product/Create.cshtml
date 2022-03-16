@@ -1,0 +1,22 @@
+@model store_service.Models.Product
+@{
+    ViewBag.Title = "Добавление товара";
+}
+<form asp-action="create" asp-controller="product">
+    <div class="form-group">
+        <label asp-for="ProductName" class="control-label">Имя товара</label>
+        <input type="text" asp-for="ProductName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Price" class="control-label">Цена</label>
+        <input type="number" asp-for="Price" class="form-control" />
+    </div>
+   
+    <div class="form-group">
+        <label asp-for="ProducerId" class="control-label">Цена</label>
+        <input type="number" asp-for="CategoryId" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Отправить" class="btn btn-default" />
+    </div>
+</form>

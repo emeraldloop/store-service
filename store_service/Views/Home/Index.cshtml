@@ -1,0 +1,31 @@
+﻿@model IEnumerable<store_service.Models.Product>
+@{
+    //ViewData["Title"] = "Список товаров";
+    Layout = null;
+}
+<!DOCTYPE html>
+ 
+<html>
+<head>
+    <title>Магазин одежды</title>
+</head>
+<body>
+<h3>Товары</h3>
+<table>
+    <tr>
+        <td>Имя</td>
+        <td>Цена</td>
+        <td>Категория</td>
+        <td>Производитель</td>
+        <td></td>
+    </tr>
+    @foreach (var product in Model)
+    {
+        <tr>
+            <td>@product.ProductName</td>
+            
+        </tr>
+    }
+</table>
+</body>
+</html>
