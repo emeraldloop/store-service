@@ -18,18 +18,15 @@ public class PersonOrderController
         _service = service;
     }
     [HttpPost]
-    public async Task<JsonResult> MakeOrder(JObject model)
+    public async Task<JsonResult> MakeOrder(ClientOrder model)
     {
-        var config = new MapperConfiguration(cfg => cfg.CreateMap<JObject, PersonOrder>()
-                .ForMember("PersonId", cfg => { cfg.MapFrom(jo => jo["PersonId"]); })
-                .ForMember("Total", cfg => { cfg.MapFrom(jo => jo["Total"]); })
-                .ForMember("Products", cfg => { cfg.MapFrom(jo => jo["name"]); })
-                
+        var config = new MapperConfiguration(cfg => cfg.CreateMap<ClientOrder, PersonOrder>()
+                .ForMember(dest => dest.total_price, act => act.MapFrom(src => src.total))
         );
         var mapper = new Mapper(config);
         
         // Выполняем сопоставление
-        PersonOrder order = mapper.Map<JObject, PersonOrder>(model);
+        PersonOrder order = mapper.Map<ClientOrder, PersonOrder>(model);
         
         try
         {
